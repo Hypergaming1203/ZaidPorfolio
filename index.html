@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Muhammad Zaid | Full Stack Web Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
 
-:root {
+        :root {
             --accent: 16 185 129;
             --bg: 10 10 10;
             --text: 229 229 229;
@@ -31,7 +31,7 @@
         body {
             background: rgb(var(--bg));
             color: rgb(var(--text));
-            font-family: 'Inter', system_ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             transition: all 0.4s ease;
         }
 
@@ -57,30 +57,15 @@
             color: rgb(var(--accent));
         }
 
-        .skill-card, .project-card {
+        .project-card {
             background: rgb(var(--card));
             border: 1px solid rgb(var(--border));
-            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .skill-card:hover, .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-
-        .section-header {
-            position: relative;
-        }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: rgb(var(--accent));
-            border-radius: 9999px;
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
         }
 
         .glass {
@@ -93,214 +78,221 @@
             background: rgba(255, 255, 255, 0.8);
         }
 
-        .toggle-btn {
-            transition: all 0.3s ease;
+        /* Typing Animation */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid rgb(var(--accent));
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 4s steps(40, end) infinite, blink-caret .75s step-end infinite;
         }
 
-        .logo-spin {
-            animation: spin 20s linear infinite;
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
 
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: rgb(var(--accent)); }
+        }
+
+        /* MZ SVG - Repeat (infinite loop) */
+        .mz-anim-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .mz-anim {
+            width: 180px;
+            height: 120px;
+            overflow: visible;
+        }
+
+        .mz-anim path {
+            stroke: rgb(var(--accent));
+            stroke-width: 4;
+            fill: transparent;
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation: mzDraw 4s ease-in-out infinite; /* repeat */
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            vector-effect: non-scaling-stroke;
+        }
+
+        @keyframes mzDraw {
+            0% { stroke-dashoffset: 400; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 400; } /* loop back */
+        }
+
+        .mz-glow {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(var(--accent),0.25) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: pulseGlow 3s infinite ease-in-out; /* glow repeat */
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* Mobile navbar fixes */
+        @media (max-width: 640px) {
+            nav .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                gap: 0.75rem;
             }
-            to {
-                transform: rotate(360deg);
+            .right-buttons {
+                flex-direction: row;
+                gap: 0.5rem;
+            }
+            .hire-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+            .whatsapp-send-btn {
+                white-space: normal;
+                text-align: center;
+                line-height: 1.4;
+                font-size: 1rem;
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem;
+            }
+            .whatsapp-send-btn .text {
+                display: block;
             }
         }
     </style>
 </head>
-<body class="overflow-x-hidden" data-theme="dark">
+<body class="overflow-x-hidden">
 
     <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-[rgb(var(--border))]">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            <!-- LOGO -->
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Muhammad Zaid Logo"
-                class="w-10 h-10 rounded-2xl object-cover border-2 border-[rgb(var(--accent))] logo-spin">
-                <div>
-                    <span class="text-2xl font-bold heading-font tracking-tighter">Zaid.</span>
-                </div>
+        <div class="container max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <img src="logo.png" alt="Muhammad Zaid Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-2xl object-cover border-2 border-[rgb(var(--accent))] logo-spin" loading="lazy">
+                <span class="text-xl sm:text-2xl font-bold heading-font tracking-tighter">Zaid.</span>
             </div>
 
-            <!-- DESKTOP MENU -->
-            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+            <!-- Desktop menu -->
+            <div class="hidden md:flex items-center gap-6 lg:gap-10 text-sm font-medium">
                 <a href="#about" onclick="smoothScrollTo('about')" class="nav-link">About</a>
                 <a href="#skills" onclick="smoothScrollTo('skills')" class="nav-link">Skills</a>
                 <a href="#projects" onclick="smoothScrollTo('projects')" class="nav-link">Projects</a>
                 <a href="#contact" onclick="smoothScrollTo('contact')" class="nav-link">Contact</a>
             </div>
 
-            <!-- RIGHT SIDE -->
-            <div class="flex items-center gap-6">
-                <!-- THEME TOGGLE -->
-                <button onclick="toggleTheme()" id="theme-toggle"
-                    class="toggle-btn w-10 h-10 flex items-center justify-center rounded-2xl border border-[rgb(var(--border))] hover:border-[rgb(var(--accent))]">
-                    <i id="theme-icon" class="fas fa-moon text-xl"></i>
+            <!-- Right side -->
+            <div class="right-buttons flex items-center gap-3 sm:gap-4">
+                <button onclick="toggleTheme()" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl border border-[rgb(var(--border))] hover:border-[rgb(var(--accent))]">
+                    <i id="theme-icon" class="fas fa-moon text-lg sm:text-xl"></i>
                 </button>
 
-                <!-- HIRE ME -->
-                <a href="#contact"
-                    onclick="smoothScrollTo('contact')"
-                    class="hidden sm:block px-6 py-2.5 bg-[rgb(var(--accent))] hover:bg-emerald-600 text-white text-sm font-semibold rounded-3xl transition-all">
+                <a href="#contact" onclick="smoothScrollTo('contact')" class="hire-btn px-4 sm:px-6 py-2 bg-[rgb(var(--accent))] hover:bg-emerald-600 text-white text-xs sm:text-sm font-semibold rounded-3xl transition-all">
                     Hire Me
                 </a>
-
-                <!-- MOBILE MENU BUTTON -->
-                <button onclick="toggleMobileMenu()" id="mobile-menu-btn"
-                    class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[rgb(var(--card))] border-t border-[rgb(var(--border))] py-6">
-            <div class="flex flex-col gap-6 px-6 text-lg font-medium">
-                <a href="#about" onclick="smoothScrollTo('about');toggleMobileMenu()" class="">About</a>
-                <a href="#skills" onclick="smoothScrollTo('skills');toggleMobileMenu()" class="">Skills</a>
-                <a href="#projects" onclick="smoothScrollTo('projects');toggleMobileMenu()" class="">Projects</a>
-                <a href="#contact" onclick="smoothScrollTo('contact');toggleMobileMenu()" class="">Contact</a>
-                <div class="pt-4 border-t border-[rgb(var(--border))]">
-                    <a href="#contact"
-                        onclick="smoothScrollTo('contact');toggleMobileMenu()"
-                        class="block w-full py-3 bg-[rgb(var(--accent))] text-white text-center font-semibold rounded-3xl">
-                        Hire Me
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-2 bg-[rgb(var(--card))]/80 backdrop-blur-md px-5 py-2 rounded-3xl mb-6 border border-[rgb(var(--border))]">
+    <section id="home" class="hero-bg min-h-dvh flex items-center pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 bg-[rgb(var(--card))]/80 backdrop-blur-md px-4 py-2 rounded-3xl mb-6 border border-[rgb(var(--border))]">
                     <div class="w-2 h-2 bg-[rgb(var(--accent))] rounded-full animate-pulse"></div>
                     <span class="text-xs font-mono tracking-widest">AVAILABLE FOR FREELANCE</span>
                 </div>
 
-                <h1 class="text-7xl md:text-8xl font-bold heading-font leading-none tracking-tighter mb-4">
+                <div class="mz-anim-wrapper my-8 md:my-12">
+                    <div class="mz-glow"></div>
+                    <svg class="mz-anim" viewBox="0 0 300 150" preserveAspectRatio="xMidYMid meet">
+                        <path d="M20 120 V30 L75 90 L130 30 V120" />
+                        <path d="M170 30 H280 L170 120 H280" />
+                    </svg>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold heading-font leading-tight tracking-tighter mb-4">
                     MUHAMMAD<br>ZAID
                 </h1>
 
-                <p class="text-3xl md:text-4xl text-[rgb(var(--text-secondary))] font-light mb-8">
-                    Full Stack Web Developer
+                <p class="text-2xl sm:text-3xl md:text-5xl text-[rgb(var(--text-secondary))] font-light mb-6">
+                    <span class="typewriter" data-texts="Full Stack Web Developer|React & Node.js Specialist|Freelancer from India|Building Modern Web Apps"></span>
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="#projects"
-                        onclick="smoothScrollTo('projects')"
-                        class="group flex items-center gap-3 bg-white text-zinc-900 px-8 py-4 rounded-3xl font-semibold text-lg hover:bg-emerald-400 transition-all">
+                    <a href="#projects" onclick="smoothScrollTo('projects')" class="group flex items-center gap-3 bg-white text-zinc-900 px-6 sm:px-8 py-3 sm:py-4 rounded-3xl font-semibold text-base sm:text-lg hover:bg-emerald-400 transition-all">
                         <span>View My Work</span>
-                        <i class="fas fa-arrow-right group-active:rotate-45 transition-transform"></i>
+                        <i class="fas fa-arrow-right group-hover:rotate-45 transition-transform"></i>
                     </a>
                 </div>
 
-                <!-- TRUST BAR -->
-                <div class="mt-16 flex items-center gap-12 text-[rgb(var(--text-secondary))] text-sm">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-check"></i>
-                        <span>Python • Java • JS</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-check"></i>
-                        <span>React • Node • Tailwind</span>
-                    </div>
+                <div class="mt-10 sm:mt-12 flex flex-wrap gap-4 sm:gap-6 text-[rgb(var(--text-secondary))] text-xs sm:text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-check"></i> Python • Java • JS</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-check"></i> React • Node • Tailwind</div>
                 </div>
             </div>
         </div>
 
-        <!-- SCROLL INDICATOR -->
-        <div class="absolute bottom-10 left-1/2 flex flex-col items-center gap-2 text-xs text-[rgb(var(--text-secondary))]">
-            <div class="w-px h-12 bg-gradient-to-b from-transparent via-[rgb(var(--text))] to-transparent"></div>
+        <div class="absolute bottom-8 left-1/2 flex flex-col items-center gap-2 text-xs text-[rgb(var(--text-secondary))]">
+            <div class="w-px h-10 bg-gradient-to-b from-transparent via-[rgb(var(--text))] to-transparent"></div>
             <span class="tracking-widest">SCROLL</span>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-24 bg-[rgb(var(--card))]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <!-- LEFT -->
+    <section id="about" class="py-20 sm:py-24 bg-[rgb(var(--card))]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <div class="section-header">
                         <span class="text-[rgb(var(--accent))] text-sm font-mono tracking-widest">CHAPTER 01</span>
-                        <h2 class="text-5xl heading-font font-semibold mt-3">The Story</h2>
+                        <h2 class="text-4xl sm:text-5xl heading-font font-semibold mt-3">The Story</h2>
                     </div>
-
-                    <div class="mt-10 space-y-8 text-lg leading-relaxed text-[rgb(var(--text-secondary))]">
-                        <p>
-                            Hey, I'm Muhammad Zaid — a passionate full-stack web developer from India.
-                            I turn coffee into code and ideas into interactive digital experiences.
-                        </p>
-                        <p>
-                            With a focus on clean, modern web applications, I've built seamless e-commerce platforms
-                            like All Fabric Sarees. Always pushing the boundaries of what's possible on the web.
-                        </p>
-                        <p>
-                            Currently honing my skills in full-stack development. Let's create something amazing together.
-                        </p>
+                    <div class="mt-8 space-y-6 text-base sm:text-lg leading-relaxed text-[rgb(var(--text-secondary))]">
+                        <p>Hey, I'm Muhammad Zaid — a passionate full-stack web developer from India.</p>
+                        <p>I turn coffee into code and ideas into interactive digital experiences.</p>
+                        <p>With a focus on clean, modern web applications, I've built seamless e-commerce platforms like All Fabric Sarees. Always pushing the boundaries of what's possible on the web.</p>
+                        <p>Currently honing my skills in full-stack development. Let's create something amazing together.</p>
                     </div>
-
-                    <!-- STATS -->
-                    <div class="mt-16 grid grid-cols-3 gap-8">
+                    <div class="mt-12 grid grid-cols-3 gap-6">
                         <div>
-                            <div class="text-5xl font-bold text-[rgb(var(--accent))]">
-                                2
-                            </div>
-                            <div class="text-xs uppercase tracking-widest text-[rgb(var(--text-secondary))] mt-1">
-                                Live Projects
-                            </div>
+                            <div class="text-4xl sm:text-5xl font-bold text-[rgb(var(--accent))]">2</div>
+                            <div class="text-xs uppercase tracking-widest text-[rgb(var(--text-secondary))] mt-1">Live Projects</div>
                         </div>
                         <div>
-                            <div class="text-5xl font-bold text-[rgb(var(--accent))]">
-                                ∞
-                            </div>
-                            <div class="text-xs uppercase tracking-widest text-[rgb(var(--text-secondary))] mt-1">
-                                Hours Coding
-                            </div>
+                            <div class="text-4xl sm:text-5xl font-bold text-[rgb(var(--accent))]">∞</div>
+                            <div class="text-xs uppercase tracking-widest text-[rgb(var(--text-secondary))] mt-1">Hours Coding</div>
                         </div>
                         <div>
-                            <div class="text-5xl font-bold text-[rgb(var(--accent))]">
-                                100%
-                            </div>
-                            <div class="text-xs uppercase tracking-widest text-[rgb(var(--text-secondary))] mt-1">
-                                Web Focused
-                            </div>
+                            <div class="text-4xl sm:text-5xl font-bold text-[rgb(var(--accent))]">100%</div>
+                            <div class="text-xs uppercase tracking-widest text-[rgb(var(--text-secondary))] mt-1">Web Focused</div>
                         </div>
                     </div>
                 </div>
-
-                <!-- RIGHT: NO RANDOM PHOTO -->
                 <div class="relative">
                     <div class="aspect-square rounded-3xl overflow-hidden border border-[rgb(var(--border))] bg-gradient-to-br from-[rgb(var(--accent))] to-teal-400 flex items-center justify-center">
                         <div class="text-center">
-                            <div class="text-9xl font-bold text-white/80 heading-font tracking-tighter">
-                                MZ
-                            </div>
-                            <div class="text-sm text-white/60 font-mono">
-                                MUHAMMAD ZAID
-                            </div>
+                            <div class="text-8xl sm:text-9xl font-bold text-white/80 heading-font tracking-tighter">MZ</div>
+                            <div class="text-xs sm:text-sm text-white/60 font-mono">MUHAMMAD ZAID</div>
                         </div>
                     </div>
-
-                    <!-- FLOATING BADGE -->
-                    <div class="absolute -bottom-6 -right-6 bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-3xl p-6 shadow-2xl">
-                        <div class="flex items-center gap-4">
-                            <div class="text-4xl">
-                                🚀
-                            </div>
+                    <div class="absolute -bottom-6 -right-4 sm:-right-6 bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-3xl p-4 sm:p-6 shadow-2xl">
+                        <div class="flex items-center gap-3 sm:gap-4">
+                            <div class="text-3xl sm:text-4xl">🚀</div>
                             <div>
-                                <div class="font-semibold text-[rgb(var(--accent))]">
-                                    Open to Work
-                                </div>
-                                <div class="text-sm text-[rgb(var(--text-secondary))]">
-                                    Freelance &amp; Full-time
-                                </div>
+                                <div class="font-semibold text-[rgb(var(--accent))] text-sm sm:text-base">Open to Work</div>
+                                <div class="text-xs sm:text-sm text-[rgb(var(--text-secondary))]">Freelance & Full-time</div>
                             </div>
                         </div>
                     </div>
@@ -310,146 +302,118 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-[rgb(var(--accent))] text-sm font-mono tracking-widest">CHAPTER 02</span>
-                <h2 class="text-5xl heading-font font-semibold mt-3">What I Bring</h2>
+    <section id="skills" class="py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-4xl sm:text-5xl heading-font font-semibold">My Skills</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- SKILL 1 -->
-                <div class="skill-card rounded-3xl p-10">
-                    <div class="text-6xl mb-8 text-[rgb(var(--accent))]">
-                        🌐
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">Full Stack Web Dev</h3>
-                    <p class="text-[rgb(var(--text-secondary))] leading-relaxed">
-                        Building end-to-end web solutions with modern frameworks. From interactive UIs to scalable backends.
-                    </p>
-                    <div class="mt-8 flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">React</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">Node.js</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">Tailwind</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">Python</span>
-                    </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🌐</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">Web Developer</h3>
                 </div>
-
-                <!-- SKILL 2 -->
-                <div class="skill-card rounded-3xl p-10">
-                    <div class="text-6xl mb-8 text-[rgb(var(--accent))]">
-                        💻
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">Core Languages</h3>
-                    <p class="text-[rgb(var(--text-secondary))] leading-relaxed">
-                        Proficient in building scalable applications across Python, Java, and JavaScript.
-                    </p>
-                    <div class="mt-8 flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">Python</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">Java</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">JavaScript</span>
-                    </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">📱</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">Android App Developer</h3>
                 </div>
-
-                <!-- SKILL 3 -->
-                <div class="skill-card rounded-3xl p-10">
-                    <div class="text-6xl mb-8 text-[rgb(var(--accent))]">
-                        🎨
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">UI/UX &amp; Tools</h3>
-                    <p class="text-[rgb(var(--text-secondary))] leading-relaxed">
-                        Pixel-perfect designs with HTML, CSS, and modern frameworks. Building for the web, always.
-                    </p>
-                    <div class="mt-8 flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">HTML5</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">CSS3</span>
-                        <span class="px-4 py-2 bg-[rgb(var(--border))] text-xs rounded-3xl">Figma</span>
-                    </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🎮</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">Game Developer</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🖼️</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">3D Modelling</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🔤</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">HTML</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🎨</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">CSS</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">⚡</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">JavaScript</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🐍</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">Python</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">☕</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">Java</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">📄</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">XML</h3>
+                </div>
+                <div class="skill-card rounded-3xl p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">🛠️</div>
+                    <h3 class="text-lg sm:text-xl font-semibold">GDScript</h3>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="py-24 bg-[rgb(var(--card))]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12">
+    <section id="projects" class="py-20 sm:py-24 bg-[rgb(var(--card))]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-end mb-10 sm:mb-12">
                 <div>
                     <span class="text-[rgb(var(--accent))] text-sm font-mono tracking-widest">CHAPTER 03</span>
-                    <h2 class="text-5xl heading-font font-semibold mt-3">My Projects</h2>
+                    <h2 class="text-4xl sm:text-5xl heading-font font-semibold mt-3">My Projects</h2>
                 </div>
             </div>
 
-
-
-
-            <div class="project-card group rounded-3xl overflow-hidden max-w-3xl mx-auto">
-                <div class="h-96 relative">
-                    <img src="https://picsum.photos/id/1080/1200/800"
-                    alt="SA Gemstones"
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute top-6 right-6 bg-black/70 text-xs px-5 py-2 rounded-3xl flex items-center gap-2">
-                        <i class="fas fa-gem"></i>
-                        <span>WEB APP</span>
-                    </div>
-                </div>
-                <div class="p-10">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="font-semibold text-3xl mb-3">SA Gemstones</h3>
-                            <p class="text-[rgb(var(--text-secondary))] leading-relaxed max-w-md">
-                                Premium gemstone showcase platform with dynamic product loading,
-                                WhatsApp order integration and Firebase backend.
-                            </p>
-                        </div>
-                        <div class="text-right">
-                            <a href="https://za-gemstones.web.app" target="_blank"
-                                class="inline-flex items-center gap-2 text-[rgb(var(--accent))] hover:text-white text-sm font-medium border border-[rgb(var(--accent))]/30 hover:border-[rgb(var(--accent))] px-6 py-3 rounded-3xl">
-                                VISIT LIVE <i class="fas fa-arrow-up-right-from-square"></i>
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10">
+                <div class="project-card group relative rounded-3xl overflow-hidden">
+                    <div class="relative h-72 sm:h-80">
+                        <img src="https://picsum.photos/id/1080/1200/800" alt="SA Gemstones" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl sm:text-3xl font-semibold mb-2 sm:mb-3">SA Gemstones</h3>
+                            <ul class="text-sm space-y-1 mb-3 sm:mb-4">
+                                <li>• Dynamic product loading</li>
+                                <li>• WhatsApp order integration</li>
+                                <li>• Firebase backend</li>
+                            </ul>
+                            <a href="https://za-gemstones.web.app" target="_blank" class="inline-flex items-center gap-2 text-[rgb(var(--accent))] hover:text-white text-sm sm:text-base">
+                                Visit Live <i class="fas fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="flex gap-3 mt-10">
-                        <span class="text-[10px] px-5 py-2 bg-[rgb(var(--border))] rounded-full">HTML</span>
-                        <span class="text-[10px] px-5 py-2 bg-[rgb(var(--border))] rounded-full">Tailwind</span>
-                        <span class="text-[10px] px-5 py-2 bg-[rgb(var(--border))] rounded-full">Firebase</span>
+                    <div class="p-6">
+                        <div class="flex flex-wrap gap-2 sm:gap-3">
+                            <span class="text-xs px-3 sm:px-4 py-1 bg-[rgb(var(--border))] rounded-full">HTML</span>
+                            <span class="text-xs px-3 sm:px-4 py-1 bg-[rgb(var(--border))] rounded-full">Tailwind</span>
+                            <span class="text-xs px-3 sm:px-4 py-1 bg-[rgb(var(--border))] rounded-full">Firebase</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-
-
-            <div class="grid md:grid-cols-1 gap-8">
-                <div class="project-card group rounded-3xl overflow-hidden max-w-3xl mx-auto">
-                    <div class="h-96 relative">
-                        <img src="https://picsum.photos/id/201/1200/800"
-                        alt="All Fabric Sarees"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-6 right-6 bg-black/70 text-xs px-5 py-2 rounded-3xl flex items-center gap-2">
-                            <i class="fas fa-globe"></i>
-                            <span>WEB APP</span>
+                <div class="project-card group relative rounded-3xl overflow-hidden">
+                    <div class="relative h-72 sm:h-80">
+                        <img src="https://picsum.photos/id/201/1200/800" alt="All Fabric Sarees" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <h3 class="text-2xl sm:text-3xl font-semibold mb-2 sm:mb-3">All Fabric Sarees</h3>
+                            <ul class="text-sm space-y-1 mb-3 sm:mb-4">
+                                <li>• Full e-commerce flow</li>
+                                <li>• Premium UI/UX</li>
+                                <li>• Firebase powered</li>
+                            </ul>
+                            <a href="https://all-fabric-sarees.web.app" target="_blank" class="inline-flex items-center gap-2 text-[rgb(var(--accent))] hover:text-white text-sm sm:text-base">
+                                Visit Live <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="p-10">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-semibold text-3xl mb-3">All Fabric Sarees</h3>
-                                <p class="text-[rgb(var(--text-secondary))] leading-relaxed max-w-md">
-                                    Premium e-commerce platform for traditional Indian sarees.
-                                    Built with full-stack technologies for a smooth shopping experience.
-                                </p>
-                            </div>
-                            <div class="text-right">
-                                <a href="https://all-fabric-sarees.web.app" target="_blank"
-                                    class="inline-flex items-center gap-2 text-[rgb(var(--accent))] hover:text-white text-sm font-medium border border-[rgb(var(--accent))]/30 hover:border-[rgb(var(--accent))] px-6 py-3 rounded-3xl">
-                                    VISIT LIVE <i class="fas fa-arrow-up-right-from-square"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="flex gap-3 mt-10">
-                            <span class="text-[10px] px-5 py-2 bg-[rgb(var(--border))] rounded-full">React</span>
-                            <span class="text-[10px] px-5 py-2 bg-[rgb(var(--border))] rounded-full">CSS</span>
-                            <span class="text-[10px] px-5 py-2 bg-[rgb(var(--border))] rounded-full">Firebase</span>
+                    <div class="p-6">
+                        <div class="flex flex-wrap gap-2 sm:gap-3">
+                            <span class="text-xs px-3 sm:px-4 py-1 bg-[rgb(var(--border))] rounded-full">React</span>
+                            <span class="text-xs px-3 sm:px-4 py-1 bg-[rgb(var(--border))] rounded-full">CSS</span>
+                            <span class="text-xs px-3 sm:px-4 py-1 bg-[rgb(var(--border))] rounded-full">Firebase</span>
                         </div>
                     </div>
                 </div>
@@ -458,50 +422,62 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-24">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-[rgb(var(--card))] rounded-[3rem] p-16 border border-[rgb(var(--border))]">
-                <div class="text-center mb-12">
+    <section id="contact" class="py-20 sm:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-[rgb(var(--card))] rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-10 md:p-16 border border-[rgb(var(--border))]">
+                <div class="text-center mb-10 sm:mb-12">
                     <span class="text-[rgb(var(--accent))] text-sm font-mono tracking-widest">CHAPTER 04</span>
-                    <h2 class="text-5xl heading-font font-semibold mt-3">Let's Connect</h2>
-                    <p class="text-[rgb(var(--text-secondary))] mt-4 max-w-md mx-auto">
-                        Got a project? Let's chat on WhatsApp. I'll respond within hours.
+                    <h2 class="text-4xl sm:text-5xl heading-font font-semibold mt-3">Let's Connect</h2>
+                    <p class="text-[rgb(var(--text-secondary))] mt-4 max-w-md mx-auto text-sm sm:text-base">
+                        Got a project or idea? Reach out — I usually reply within hours.
                     </p>
                 </div>
 
-                <div class="space-y-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="block text-xs font-mono text-[rgb(var(--text-secondary))] mb-2">YOUR NAME</label>
-                            <input type="text" id="whatsapp-name" placeholder="John Doe"
-                            class="w-full bg-transparent border border-[rgb(var(--border))] focus:border-[rgb(var(--accent))] rounded-3xl px-6 py-5 text-lg outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono text-[rgb(var(--text-secondary))] mb-2">YOUR NUMBER (OPTIONAL)</label>
-                            <input type="tel" id="whatsapp-phone" placeholder="+91 98765 43210"
-                            class="w-full bg-transparent border border-[rgb(var(--border))] focus:border-[rgb(var(--accent))] rounded-3xl px-6 py-5 text-lg outline-none transition-all">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-mono text-[rgb(var(--text-secondary))] mb-2">MESSAGE</label>
-                        <textarea id="whatsapp-message" rows="5" placeholder="Hi Zaid, I have a web project for you..."
-                            class="w-full bg-transparent border border-[rgb(var(--border))] focus:border-[rgb(var(--accent))] rounded-3xl px-6 py-5 text-lg outline-none transition-all resize-y"></textarea>
-                    </div>
-
-                    <button onclick="sendWhatsAppRequest()"
-                        class="w-full py-6 bg-[rgb(var(--accent))] hover:bg-emerald-600 text-white font-semibold text-xl rounded-3xl transition-all flex items-center justify-center gap-3 group">
-                        <i class="fab fa-whatsapp text-3xl"></i>
-                        SEND VIA WHATSAPP
-                    </button>
-
+                <div class="space-y-8 sm:space-y-10">
                     <div class="text-center">
-                        <a href="https://wa.me/917483497173" target="_blank"
-                            class="text-[rgb(var(--accent))] hover:text-emerald-500 text-sm font-medium flex items-center justify-center gap-2">
-                            <span>Or directly message me at</span>
-                            <span class="font-mono">+91 74834 97173</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="inline-flex flex-col sm:flex-row items-center gap-3 bg-[rgb(var(--accent))]/20 backdrop-blur-md px-5 sm:px-6 py-4 rounded-3xl border border-[rgb(var(--accent))]/30">
+                            <i class="fas fa-envelope text-3xl text-[rgb(var(--accent))]"></i>
+                            <div class="text-center sm:text-left">
+                                <div class="font-semibold text-base sm:text-lg">Preferred Method</div>
+                                <a href="mailto:muhammadzaid7796@gmail.com" class="text-[rgb(var(--accent))] hover:underline font-mono text-sm sm:text-base break-all">
+                                    muhammadzaid7796@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-[rgb(var(--text-secondary))] mt-3">
+                            Best for detailed discussions, proposals, or sharing files.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-mono text-[rgb(var(--text-secondary))] mb-2">YOUR NAME</label>
+                                <input type="text" id="whatsapp-name" placeholder="John Doe" class="w-full bg-transparent border border-[rgb(var(--border))] focus:border-[rgb(var(--accent))] rounded-3xl px-5 sm:px-6 py-4 sm:py-5 text-base sm:text-lg outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-[rgb(var(--text-secondary))] mb-2">YOUR NUMBER (OPTIONAL)</label>
+                                <input type="tel" id="whatsapp-phone" placeholder="+91 98765 43210" class="w-full bg-transparent border border-[rgb(var(--border))] focus:border-[rgb(var(--accent))] rounded-3xl px-5 sm:px-6 py-4 sm:py-5 text-base sm:text-lg outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-[rgb(var(--text-secondary))] mb-2">MESSAGE</label>
+                            <textarea id="whatsapp-message" rows="5" placeholder="Hi Zaid, I have a web project for you..." class="w-full bg-transparent border border-[rgb(var(--border))] focus:border-[rgb(var(--accent))] rounded-3xl px-5 sm:px-6 py-4 sm:py-5 text-base sm:text-lg outline-none transition-all resize-y"></textarea>
+                        </div>
+
+                        <button onclick="sendWhatsAppRequest()" class="whatsapp-send-btn w-full py-5 sm:py-6 bg-[rgb(var(--accent))] hover:bg-emerald-600 text-white font-semibold text-lg sm:text-xl rounded-3xl transition-all flex items-center justify-center gap-3 group">
+                            <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
+                            <span class="text">QUICK CHAT VIA WHATSAPP</span>
+                        </button>
+
+                        <div class="text-center">
+                            <a href="https://wa.me/917483497173" target="_blank" class="text-[rgb(var(--accent))] hover:text-emerald-500 text-sm font-medium flex items-center justify-center gap-2">
+                                <span>Or message directly:</span>
+                                <span class="font-mono">+91 74834 97173</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -509,120 +485,85 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[rgb(var(--bg))] py-16 border-t border-[rgb(var(--border))]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer class="bg-[rgb(var(--bg))] py-12 sm:py-16 border-t border-[rgb(var(--border))]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
                 <div class="flex items-center gap-3">
-                    <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-2xl">
+                    <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-2xl" loading="lazy">
                     <span class="text-xl font-bold heading-font">Zaid.</span>
                 </div>
 
-                <div class="text-xs text-[rgb(var(--text-secondary))] flex items-center gap-2">
-                    MADE WITH ❤️ IN INDIA
-                    <span class="text-[rgb(var(--accent))]">•</span>
-                    © 2026 MUHAMMAD ZAID
+                <div class="flex gap-6">
+                    <a href="https://www.linkedin.com/in/muhammad-zaid-705a5b3b1?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-[rgb(var(--text-secondary))] hover:text-[rgb(var(--accent))] flex items-center gap-2">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+
+                <div class="text-xs text-[rgb(var(--text-secondary))]">
+                    MADE WITH ❤️ IN INDIA • © 2026 MUHAMMAD ZAID
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme Toggle (Fixed with data-theme)
         function toggleTheme() {
             const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light': 'dark';
-            body.setAttribute('data-theme', newTheme);
-
-            // Update icon
+            const current = body.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', next);
             const icon = document.getElementById('theme-icon');
-            if (newTheme === 'dark') {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+            icon.classList.toggle('fa-moon', next === 'dark');
+            icon.classList.toggle('fa-sun', next === 'light');
+        }
+
+        function smoothScrollTo(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                const offset = 80;
+                const y = el.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }
 
-        // Default dark
-        document.body.setAttribute('data-theme', 'dark');
-
-        // Mobile Menu
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-menu-btn').querySelector('i');
-
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                menu.classList.add('hidden');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            }
-        }
-
-        // Smooth Scroll
-        function smoothScrollTo(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                const navHeight = 80;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.scrollY - navHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // WhatsApp Request
         function sendWhatsAppRequest() {
-            const msg1 = document.getElementById('whatsapp-name').value.trim() || 'I Have A Project For You';
+            const name = document.getElementById('whatsapp-name').value.trim() || 'I Have A Project For You';
             const phone = document.getElementById('whatsapp-phone').value.trim();
-            const msg2 = document.getElementById('whatsapp-message').value.trim() || 'Lets Start Conversation??';
-
-            let text = `Hello Muhammad Zaid! ${msg1}.`;
+            const msg = document.getElementById('whatsapp-message').value.trim() || 'Lets Start Conversation??';
+            let text = `Hello Muhammad Zaid! ${name}.`;
             if (phone) text += ` My number: ${phone}.`;
-            text += ` ${msg2}`;
-
-            const whatsappUrl = `https://wa.me/917483497173?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank');
+            text += ` ${msg}`;
+            window.open(`https://wa.me/917483497173?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        // Keyboard shortcut
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                e.preventDefault();
-                toggleTheme();
+        // Typing animation
+        const typewriter = document.querySelector('.typewriter');
+        if (typewriter) {
+            const texts = typewriter.getAttribute('data-texts').split('|');
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentText = texts[textIndex];
+                typewriter.textContent = currentText.substring(0, charIndex);
+
+                if (!isDeleting && charIndex < currentText.length) {
+                    charIndex++;
+                    setTimeout(type, 80);
+                } else if (isDeleting && charIndex > 0) {
+                    charIndex--;
+                    setTimeout(type, 50);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        textIndex = (textIndex + 1) % texts.length;
+                    }
+                    setTimeout(type, isDeleting ? 50 : 1500);
+                }
             }
-        });
-
-        // Nav active
-        window.onload = function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            window.addEventListener('scroll',
-                () => {
-                    let current = '';
-                    const sections = document.querySelectorAll('section[id]');
-
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        if (scrollY >= sectionTop - 200) {
-                            current = section.getAttribute('id');
-                        }
-                    });
-
-                    navLinks.forEach(link => {
-                        link.classList.remove('text-[rgb(var(--accent))]', 'font-semibold');
-                        if (link.getAttribute('href') === `#${current}`) {
-                            link.classList.add('text-[rgb(var(--accent))]', 'font-semibold');
-                        }
-                    });
-                });
+            type();
         }
     </script>
 </body>
